@@ -1,0 +1,10 @@
+## Author: Kressilac @Duskwood
+## Interface: 40300
+## Notes: Updated for 4.3
+## SavedVariables: HasteWeight, CritWeight, MasteryWeight, DamageWeight, SpellpowerWeight, ShadowPriestDoTTimerxPosiFrame, ShadowPriestDoTTimerFrameScaleFrame, HideEvangelism, HideOrbs, HideAA, HideES, BuffList, HideMB, CooldownOffset
+## Title: Shadow Priest DoT Timer
+## Version: 1.1
+ShadowPriestDoTTimer.xml
+ShadowPriestDoTTimer.lua
+Options.xml
+Options.lua

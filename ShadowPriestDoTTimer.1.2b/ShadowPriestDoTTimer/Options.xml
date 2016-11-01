@@ -1,0 +1,588 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Options.lua" />
+	<Button name="BuffListHeader" virtual="true">
+		<NormalTexture name="$parentBG">
+			<Color r="0.4" g="0.4" b="0.4" a="0.4" />
+		</NormalTexture>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="4" y="0" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="GameFontHighLight" />
+		<HighlightFont style="GameFontNormal" />
+	</Button>
+	<Button name="BuffListEntry" virtual="true" hidden="true">
+		<Size>
+			<AbsDimension x="504" y="24" />
+		</Size>
+		<Layers>
+			<Layer>
+				<FontString name="$parentName" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="212" y="24" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="4" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStat" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="110" y="24" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT" />
+					</Anchors>
+				</FontString>
+				<FontString name="$parentModifier" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="60" y="24" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentStat" relativePoint="RIGHT" />
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMaxStacks" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="104" y="24" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentModifier" relativePoint="RIGHT" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				getglobal(self:GetName() .. "BG"):Hide()
+			</OnLoad>
+			<OnClick>
+				BuffListEntry_OnClick(self)
+			</OnClick>
+			<OnEnter>
+				getglobal(self:GetName() .. "BG"):Show()
+			</OnEnter>
+			<OnLeave>
+				getglobal(self:GetName() .. "BG"):Hide()
+			</OnLeave>
+		</Scripts>
+		<NormalTexture name="$parentBG">
+			<Color r="0.75" g="0" b="0" a="0.5" />
+		</NormalTexture>
+	</Button>
+	<Frame name="OptionsFrame" parent="UIParent" toplevel="true" movable="true" enableMouse="true" enableKeyboard="true">
+		<Size>
+			<AbsDimension x="597" y="572" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset x="29" y="-44" />
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="LabelMastery" inherits="GameFontNormal" text="Mastery" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="49" y="-42" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelWeights" inherits="GameFontRedLarge" text="Weights" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="23" y="-16" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelSpellPower" inherits="GameFontNormal" text="Spell Power" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="177" y="-42" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelCrit" inherits="GameFontNormal" text="Crit" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="49" y="-107" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelHaste" inherits="GameFontNormal" text="Haste" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="177" y="-107" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelDisplayOptions" inherits="GameFontRedLarge" text="Display Options" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="140" y="40" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="324" y="-138" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelCooldownOffset" inherits="GameFontNormal" text="Cooldown Offset" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="112" y="25" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="350" y="-173" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelPercentDamage" inherits="GameFontNormal" text="Per +1% Damage" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="169" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="49" y="-173" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelHideElements" inherits="GameFontRedLarge" text="Hide Elements" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="140" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="324" y="-16" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelBuffList" inherits="GameFontRedLarge" text="Buff List" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="23" y="-246" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelRemoveBuff" inherits="GameFontWhite" text="Click a buff name to remove buff" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="196" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="348" y="-250" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelAddBuffName" inherits="GameFontNormal" text="Buff Name" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="44" y="-478" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelBuffStatAdd" inherits="GameFontNormal" text="Stat" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="221" y="-478" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelBuffModifierAdd" inherits="GameFontNormal" text="Modifier" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="56" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="317" y="-478" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="LabelMaxStacksAdd" inherits="GameFontNormal" text="Max Stacks" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="77" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="389" y="-478" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FontStringError" inherits="GameFontGreen" text="" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="506" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="40" y="-531" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<EditBox name="EditBoxMastery" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="98" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="49" y="-68" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxSpellPower" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="100" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="177" y="-68" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxCrit" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="100" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="49" y="-134" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxHaste" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="100" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="177" y="-134" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxDamage" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="100" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="49" y="-200" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxCooldownOffset" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="100" y="52" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="348" y="-184" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<Frame name="BuffListTable">
+				<Size>
+					<AbsDimension x="504" y="200" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="40" y="-272" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<TileSize>
+						<AbsValue val="16" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="16" />
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<Button name="$parentHeaderName" inherits="BuffListHeader" id="1" text="Name">
+						<Size>
+							<AbsDimension x="212" y="24" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="8" y="-8" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentHeaderStat" inherits="BuffListHeader" id="2" text="Stat">
+						<Size>
+							<AbsDimension x="110" y="24" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentHeaderName" relativePoint="RIGHT" />
+						</Anchors>
+					</Button>
+					<Button name="$parentHeaderModifier" inherits="BuffListHeader" id="3" text="Modifier">
+						<Size>
+							<AbsDimension x="60" y="24" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentHeaderStat" relativePoint="RIGHT" />
+						</Anchors>
+					</Button>
+					<Button name="BuffListTableHeaderMaxStacks" inherits="BuffListHeader" id="4" text="Max Stacks">
+						<Size>
+							<AbsDimension x="104" y="24" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentHeaderModifier" relativePoint="RIGHT" />
+						</Anchors>
+					</Button>
+					<ScrollFrame name="BuffListScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="16" y="190" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-27" y="-5" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								BuffListScrollFrame_OnVerticalScroll(self, offset, 24)
+							</OnVerticalScroll>
+						</Scripts>
+					</ScrollFrame>
+				</Frames>
+				<Scripts>
+					<OnMouseWheel>
+						ScrollFrameTemplate_OnMouseWheel(BuffListScrollFrame, delta)
+					</OnMouseWheel>
+				</Scripts>
+			</Frame>
+			<EditBox name="EditBoxAddBuffName" inherits="InputBoxTemplate" enableKeyboard="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="160" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="44" y="-493" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxAddStat" inherits="InputBoxTemplate" enableKeyboard="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="80" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="221" y="-493" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxAddModifier" inherits="InputBoxTemplate" enableKeyboard="true" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="56" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="317" y="-493" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBoxAddMaxStacks" inherits="InputBoxTemplate" enableKeyboard="true" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="68" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="389" y="-493" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<Button name="ButtonAddBuff" inherits="UIPanelButtonTemplate" text="Add">
+				<Size>
+					<AbsDimension x="75" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="471" y="-496" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ButtonAddBuff_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<CheckButton name="CheckButtonHideAA" inherits="UICheckButtonTemplate" text="Dark ArchAngel">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="350" y="-42" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="Dark Archangel" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="160" y="20" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</CheckButton>
+			<CheckButton name="CheckButtonHideES" inherits="UICheckButtonTemplate" text="Empowered Shadow">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="350" y="-80" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="Empowered Shadow" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="160" y="20" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</CheckButton>
+			<CheckButton name="CheckButtonHideOrbs" inherits="UICheckButtonTemplate" text="Shadow Orbs">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="485" y="-80" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="Shadow Orbs" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="160" y="20" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</CheckButton>
+			<CheckButton name="CheckButtonHideEvangelism" inherits="UICheckButtonTemplate" text="Evangelism">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="485" y="-42" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="Evangelism" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="160" y="20" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</CheckButton>
+			<CheckButton name="CheckButtonHideMB" inherits="UICheckButtonTemplate" text="Mind Blast">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="485" y="-118" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="Mind Blast" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="160" y="20" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</CheckButton>
+			<Button name="ResetDefaultBuffsButton" inherits="UIPanelButtonTemplate" text="Reset Buffs">
+				<Size>
+					<AbsDimension x="86" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="92" y="-243" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ResetDefaultBuffsButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				OptionsFrame_OnLoad(self);
+			</OnLoad>
+			<OnEvent>
+				OptionsFrame_OnEvent(self, event, ...);
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>

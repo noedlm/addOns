@@ -1,0 +1,217 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="ShadowPriestDoTTimer.lua" />
+	<Frame name="ShadowPriestDoTTimerFrame" setAllPoints="true" alpha="10" toplevel="true" movable="true" frameStrata="BACKGROUND" protected="true">
+		<Size>
+			<AbsDimension x="320" y="40" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset x="0" y="-70" />
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer>
+				<Texture name="Texture8">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="280" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture7">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="240" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture6">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="200" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture5">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="160" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture4">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="120" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture3">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="80" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture2">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="40" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture1">
+					<Size x="39" y="39" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="0" y="-1" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT1" inherits="GameFontNormal" text="Icon1">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="Texture1" relativePoint="CENTER">
+							<Offset x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT1Above" inherits="GameFontNormal" text="0">
+					<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Texture1" relativePoint="TOPLEFT">
+						<Offset x="0" y="15" />
+					</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT2" inherits="GameFontNormal" text="Icon2">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="Texture2" relativePoint="CENTER">
+							<Offset x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT2Above" inherits="GameFontNormal" text="0">
+					<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Texture2" relativePoint="TOPLEFT">
+						<Offset x="0" y="15" />
+					</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT3" inherits="GameFontNormal" text="Icon3">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="Texture3" relativePoint="CENTER">
+							<Offset x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT4" inherits="GameFontNormal" text="Icon4">
+					<Anchors>
+					<Anchor point="CENTER" relativeTo="Texture4" relativePoint="CENTER">
+						<Offset x="0" y="0" />
+					</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT5" inherits="GameFontNormal" text="Icon5">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="Texture5" relativePoint="CENTER">
+							<Offset x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT6" inherits="GameFontNormal" text="Icon6">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="Texture6" relativePoint="CENTER">
+							<Offset x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT6Above" inherits="GameFontNormal" text="0">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="Texture6" relativePoint="TOPLEFT">
+							<Offset x="0" y="15" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT7" inherits="GameFontNormal" text="Icon7">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="Texture7" relativePoint="CENTER">
+							<Offset x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT7Above" inherits="GameFontNormal" text="0">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="Texture7" relativePoint="TOPLEFT">
+							<Offset x="0" y="15" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TEXT8" inherits="GameFontNormal" text="Icon8">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="Texture8" relativePoint="CENTER">
+							<Offset x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>ShadowPriestDoTTimerFrame_OnLoad(self);</OnLoad>
+			<OnUpdate>ShadowPriestDoTTimerFrame_OnUpdate(elapsed);</OnUpdate>
+			<OnEvent>ShadowPriestDoTTimerFrame_OnEvent(self, event, ...);</OnEvent>
+			<OnMouseDown>
+				if STmode == 2 then
+				if button == "LeftButton" and not self.isLocked then
+				self:StartMoving();
+				self.isMoving = true;
+				end
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				if button == "LeftButton" and self.isMoving then
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+				point, relativeTo, relativePoint, xOffset, yOffset = self:GetPoint(1);
+				ShadowPriestDoTTimerxPosiFrame = xOffset
+				DEFAULT_CHAT_FRAME:AddMessage("-spdt moved x:"..xOffset.." y:"..yOffset);
+				end
+			</OnMouseUp>
+			<OnHide>
+				if ( this.isMoving ) then
+				this:StopMovingOrSizing();
+				this.isMoving = false;
+				end
+			</OnHide>
+		</Scripts>
+	</Frame>
+</Ui>
